@@ -1,0 +1,33 @@
+{
+  "name": "disputedesk",
+  "version": "1.0.0",
+  "description": "DisputeDesk: PayPal disputes in, verified evidence responses out. An AI agent + MCP server for small merchants, with a human approval gate.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Joshua Jubelo <caughtsight007@gmail.com>",
+  "repository": { "type": "git", "url": "git+https://github.com/Quantumwoof/disputedesk.git" },
+  "engines": { "node": ">=20" },
+  "bin": { "disputedesk": "bin/disputedesk.js" },
+  "scripts": {
+    "demo": "node bin/disputedesk.js demo",
+    "serve": "node bin/disputedesk.js serve",
+    "mock": "node bin/disputedesk.js mock",
+    "mcp": "node bin/disputedesk.js mcp",
+    "triage": "node bin/disputedesk.js triage",
+    "eval": "node eval/run.js",
+    "eval:llm": "node eval/llm-run.js",
+    "test": "node --test \"tests/*.test.js\"",
+    "vendor": "node scripts/vendor.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^3.25.0"
+  },
+  "optionalDependencies": {
+    "@paypal/mcp": "^1.8.1"
+  },
+  "devDependencies": {
+    "ag-grid-community": "^36.3.0"
+  },
+  "keywords": ["paypal", "disputes", "chargebacks", "mcp", "agent", "paypal-agent-toolkit"]
+}

@@ -1,0 +1,167 @@
+{
+  "_comment": "Synthetic example. Key = PayPal seller_transaction_id. Replace with an export from your shop.",
+  "merchant": {
+    "name": "Kilnwright Ceramics",
+    "return_policy": "Unused items may be returned within 30 days of delivery for a refund; the buyer pays return shipping. Items damaged in transit are refunded in full. All items are made to order and may vary slightly in glaze colour.",
+    "handling_days": 3
+  },
+  "records": {
+    "8VH44VYECB92EVFAJ": {
+      "merchant": {
+        "name": "Kilnwright Ceramics",
+        "return_policy": "Unused items may be returned within 30 days of delivery for a refund; the buyer pays return shipping. Items damaged in transit are refunded in full. All items are made to order and may vary slightly in glaze colour.",
+        "handling_days": 3
+      },
+      "orders": [
+        {
+          "order_id": "KC-15395",
+          "transaction_id": "8VH44VYECB92EVFAJ",
+          "placed_at": "2026-10-24T09:00:00.000Z",
+          "items": [
+            {
+              "sku": "VASE-TALL",
+              "name": "Tall bud vase, matte sage",
+              "qty": 2,
+              "unit_price": 58,
+              "listing_description": "Hand-thrown 28 cm bud vase, matte sage glaze, waterproof interior."
+            }
+          ],
+          "shipping_fee": 8.5,
+          "total": 124.5,
+          "currency": "USD",
+          "ship_to": {
+            "name": "Owen Pritchard",
+            "line1": "12 Example Street",
+            "city": "Denver",
+            "region": "CO",
+            "postal": "80202",
+            "country": "US"
+          },
+          "buyer_note": ""
+        }
+      ],
+      "shipments": [
+        {
+          "order_id": "KC-15395",
+          "carrier": "FEDEX",
+          "tracking_number": "242312168379",
+          "tracking_url": "https://www.fedex.com/fedextrack/?trknbr=242312168379",
+          "shipped_at": "2026-10-25T09:00:00.000Z",
+          "status": "DELIVERED",
+          "delivered_at": "2026-11-01T09:00:00.000Z",
+          "delivered_to": {
+            "city": "Denver",
+            "postal": "80202",
+            "country": "US"
+          },
+          "signature": null,
+          "events": [
+            {
+              "at": "2026-10-25T09:00:00.000Z",
+              "status": "SHIPPED",
+              "location": "Workshop pickup"
+            },
+            {
+              "at": "2026-10-27T09:00:00.000Z",
+              "status": "IN_TRANSIT",
+              "location": "Regional hub"
+            },
+            {
+              "at": "2026-10-29T09:00:00.000Z",
+              "status": "DELIVERED",
+              "location": "Denver, US"
+            }
+          ]
+        }
+      ],
+      "refunds": [],
+      "returns": []
+    },
+    "9GC19MHVJTKNEBJQ5": {
+      "merchant": {
+        "name": "Kilnwright Ceramics",
+        "return_policy": "Unused items may be returned within 30 days of delivery for a refund; the buyer pays return shipping. Items damaged in transit are refunded in full. All items are made to order and may vary slightly in glaze colour.",
+        "handling_days": 3
+      },
+      "orders": [
+        {
+          "order_id": "KC-17186",
+          "transaction_id": "9GC19MHVJTKNEBJQ5",
+          "placed_at": "2026-10-24T09:00:00.000Z",
+          "items": [
+            {
+              "sku": "TEAPOT-1",
+              "name": "Teapot with infuser",
+              "qty": 1,
+              "unit_price": 64,
+              "listing_description": "1 L stoneware teapot with stainless infuser, ash glaze."
+            }
+          ],
+          "shipping_fee": 8.5,
+          "total": 72.5,
+          "currency": "USD",
+          "ship_to": {
+            "name": "Hannah Whitfield",
+            "line1": "12 Example Street",
+            "city": "Berlin",
+            "region": "",
+            "postal": "10115",
+            "country": "DE"
+          },
+          "buyer_note": ""
+        }
+      ],
+      "shipments": [
+        {
+          "order_id": "KC-17186",
+          "carrier": "DHL",
+          "tracking_number": "701845988443",
+          "tracking_url": "https://www.dhl.com/track?tracking-id=701845988443",
+          "shipped_at": "2026-10-25T09:00:00.000Z",
+          "status": "DELIVERED",
+          "delivered_at": "2026-10-30T09:00:00.000Z",
+          "delivered_to": {
+            "city": "Berlin",
+            "postal": "10115",
+            "country": "DE"
+          },
+          "signature": null,
+          "events": [
+            {
+              "at": "2026-10-25T09:00:00.000Z",
+              "status": "SHIPPED",
+              "location": "Workshop pickup"
+            },
+            {
+              "at": "2026-10-27T09:00:00.000Z",
+              "status": "IN_TRANSIT",
+              "location": "Regional hub"
+            },
+            {
+              "at": "2026-10-30T09:00:00.000Z",
+              "status": "DELIVERED",
+              "location": "Berlin, DE"
+            }
+          ]
+        }
+      ],
+      "refunds": [
+        {
+          "refund_id": "9A8WB9YZRTQ3NBM9G",
+          "order_id": "KC-17186",
+          "amount": 72.5,
+          "currency": "USD",
+          "issued_at": "2026-11-03T09:00:00.000Z",
+          "status": "COMPLETED"
+        }
+      ],
+      "returns": [
+        {
+          "order_id": "KC-17186",
+          "tracking_number": "RT441180209",
+          "received_at": "2026-10-31T09:00:00.000Z"
+        }
+      ]
+    }
+  }
+}

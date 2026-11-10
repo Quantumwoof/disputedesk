@@ -1,0 +1,16 @@
+# Optional: one-click free-tier hosting on Render (https://render.com). Hosts the DEMO mode (no secrets needed).
+services:
+  - type: web
+    name: disputedesk
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node bin/disputedesk.js demo
+    healthCheckPath: /api/state
+    envVars:
+      - key: DISPUTEDESK_MODE
+        value: demo
+      - key: LLM_PROVIDER
+        value: pollinations
+      - key: PORT
+        value: 10000

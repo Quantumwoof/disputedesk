@@ -1,0 +1,5 @@
+node_modules/
+.disputedesk/
+.env
+*.log
+.DS_Store

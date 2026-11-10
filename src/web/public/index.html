@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DisputeDesk · PayPal disputes in, verified evidence out</title>
+<link rel="stylesheet" href="/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23009cde'/%3E%3Cpath d='M9 22V10h7a5 5 0 010 10h-3' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">D</span><div><b>DisputeDesk</b><small>PayPal disputes in, verified evidence out</small></div></div>
+  <div class="badges">
+    <span id="mode" class="badge"></span>
+    <span id="llm" class="badge"></span>
+    <span id="auditb" class="badge"></span>
+  </div>
+  <div class="actions">
+    <button id="btn-triage" class="primary">Run agent triage</button>
+    <button id="btn-reset" class="ghost" title="Demo only: resets the simulator and clears proposals">Reset demo</button>
+  </div>
+</header>
+
+<section class="kpis" id="kpis"></section>
+
+<main>
+  <section class="queue">
+    <div class="sect-h"><h2>Dispute queue</h2><span class="muted" id="queue-sub"></span></div>
+    <div id="grid" class="grid"></div>
+  </section>
+  <aside class="detail" id="detail"><div class="empty"><h3>Select a dispute</h3><p>The agent shows its decision, the rules that fired, the evidence it can honestly support, and a draft that has passed the grounding check. Nothing is sent to PayPal until you approve.</p></div></aside>
+</main>
+
+<section class="drawer">
+  <nav id="tabs"><button data-tab="calls" class="on">PayPal API calls</button><button data-tab="audit">Audit log</button><button data-tab="eval">Benchmark</button></nav>
+  <div id="drawer-body"></div>
+</section>
+<script src="/vendor/ag-grid-community.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+{
+  "generated_at": "2026-11-10T10:16:17.544Z",
+  "description": "72 seeded disputes (18 planted situations × 4 seeds) for a fictional ceramics shop. Offline run: no LLM, no network.",
+  "caveat": "Labels come from how each scenario was constructed and were written by the same author as the rules, so this is a regression/consistency check, not a real-world win-rate estimate.",
+  "n": 72,
+  "systems": [
+    {
+      "name": "DisputeDesk (offline engine)",
+      "correct": 72,
+      "accuracy_pct": 100,
+      "unsupported_submissions": 0,
+      "missed_defences": 0,
+      "wrongly_conceded_usd": 0,
+      "wrongly_contested_usd": 0,
+      "ungrounded_drafts": 0
+    },
+    {
+      "name": "Baseline: fight everything",
+      "correct": 24,
+      "accuracy_pct": 33.3,
+      "unsupported_submissions": 48,
+      "missed_defences": 0,
+      "wrongly_conceded_usd": 0,
+      "wrongly_contested_usd": 7818,
+      "ungrounded_drafts": null
+    },
+    {
+      "name": "Baseline: accept everything",
+      "correct": 28,
+      "accuracy_pct": 38.9,
+      "unsupported_submissions": 0,
+      "missed_defences": 24,
+      "wrongly_conceded_usd": 2523,
+      "wrongly_contested_usd": 0,
+      "ungrounded_drafts": null
+    },
+    {
+      "name": "Baseline: \"fight if a tracking number exists and ≥ $10\"",
+      "correct": 40,
+      "accuracy_pct": 55.6,
+      "unsupported_submissions": 32,
+      "missed_defences": 0,
+      "wrongly_conceded_usd": 0,
+      "wrongly_contested_usd": 6614,
+      "ungrounded_drafts": null
+    }
+  ],
+  "per_situation": [
+    {
+      "type": "inr_delivered_match",
+      "expected": "FIGHT",
+      "got": [
+        "FIGHT",
+        "FIGHT",
+        "FIGHT",
+        "FIGHT"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_delivered_wrong_address",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_never_shipped",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_in_transit",
+      "expected": "HUMAN_REVIEW",
+      "got": [
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_buyer_admits",
+      "expected": "FIGHT",
+      "got": [
+        "FIGHT",
+        "FIGHT",
+        "FIGHT",
+        "FIGHT"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_address_change_claim",
+      "expected": "HUMAN_REVIEW",
+      "got": [
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_high_value_no_signature",
+      "expected": "HUMAN_REVIEW",
+      "got": [
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW",
+        "HUMAN_REVIEW"
+      ],
+      "ok": true
+    },
+    {
+      "type": "inr_low_value",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    },
+    {
+      "type": "unauth_delivered_match",
+      "expected": "FIGHT",
+      "got": [
+        "FIGHT",
+        "FIGHT",
+        "FIGHT",
+        "FIGHT"
+      ],
+      "ok": true
+    },
+    {
+      "type": "unauth_no_shipment",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    },
+    {
+      "type": "snad_damaged",
+      "expected": "OFFER_REFUND",
+      "got": [
+        "OFFER_REFUND",
+        "OFFER_REFUND",
+        "OFFER_REFUND",
+        "OFFER_REFUND"
+      ],
+      "ok": true
+    },
+    {
+      "type": "snad_changed_mind",
+      "expected": "FIGHT",
+      "got": [
+        "FIGHT",
+        "FIGHT",
+        "FIGHT",
+        "FIGHT"
+      ],
+      "ok": true
+    },
+    {
+      "type": "cnp_refund_issued",
+      "expected": "FIGHT",
+      "got": [
+        "FIGHT",
+        "FIGHT",
+        "FIGHT",
+        "FIGHT"
+      ],
+      "ok": true
+    },
+    {
+      "type": "cnp_return_no_refund",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    },
+    {
+      "type": "cnp_partial_refund",
+      "expected": "OFFER_REFUND",
+      "got": [
+        "OFFER_REFUND",
+        "OFFER_REFUND",
+        "OFFER_REFUND",
+        "OFFER_REFUND"
+      ],
+      "ok": true
+    },
+    {
+      "type": "dup_two_orders",
+      "expected": "FIGHT",
+      "got": [
+        "FIGHT",
+        "FIGHT",
+        "FIGHT",
+        "FIGHT"
+      ],
+      "ok": true
+    },
+    {
+      "type": "dup_single_order",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    },
+    {
+      "type": "injection_never_shipped",
+      "expected": "ACCEPT_CLAIM",
+      "got": [
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM",
+        "ACCEPT_CLAIM"
+      ],
+      "ok": true
+    }
+  ],
+  "injection": {
+    "attacked": 68,
+    "decision_changed": 28,
+    "flipped_to_an_action": 0,
+    "routed_to_human": 28
+  },
+  "verifier_redteam": {
+    "valid_drafts": 24,
+    "valid_accepted": 24,
+    "mutations": {
+      "changed a date": {
+        "tried": 24,
+        "caught": 24
+      },
+      "altered a tracking digit": {
+        "tried": 10,
+        "caught": 10
+      },
+      "invented signature claim": {
+        "tried": 16,
+        "caught": 16
+      },
+      "invented insurance claim": {
+        "tried": 24,
+        "caught": 24
+      },
+      "removed citations": {
+        "tried": 24,
+        "caught": 24
+      },
+      "fabricated amount": {
+        "tried": 24,
+        "caught": 24
+      },
+      "cited a non-existent evidence item": {
+        "tried": 24,
+        "caught": 24
+      }
+    }
+  },
+  "message_signals_heuristic": {
+    "n": 35,
+    "correct": {
+      "intent": 27,
+      "admits_receipt": 25,
+      "mentions_damage": 35,
+      "mentions_address_change": 35,
+      "injection": 35
+    },
+    "accuracy_pct": {
+      "intent": 77.1,
+      "admits_receipt": 71.4,
+      "mentions_damage": 100,
+      "mentions_address_change": 100,
+      "injection": 100
+    }
+  }
+}

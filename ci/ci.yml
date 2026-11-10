@@ -1,0 +1,14 @@
+# GitHub Actions workflow kept OUTSIDE .github/workflows on purpose (the pushing token lacks the `workflow` scope).
+# To enable CI: copy this file to .github/workflows/ci.yml from the GitHub web UI or with a token that has `workflow` scope.
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm ci
+      - run: npm test
+      - run: npm run eval
