@@ -12,7 +12,7 @@ Small merchants lose disputes they could win because responding is slow, manual 
 
 * PayPal gives a seller **10 days** to respond to an opened dispute; no response means the case is resolved in the buyer's favour ([PayPal Seller Protection](https://www.paypal.com/us/webapps/mpp/security/seller-protection)).
 * To win an *item not received* case, the evidence has to show delivery **to the address on the transaction**, with a carrier scan; *significantly not as described* is excluded from Seller Protection altogether; orders above USD 750 need a signature.
-* Merchants only win about half of the representments they file (Mastercard/Datos 2025: 50% on average, 54% in the US) — so the cost is both lost money *and* wasted time on cases with no defence.
+* In a survey of 840 midsize and large merchants, merchants won about half of the card-chargeback representments they filed (Mastercard/Datos Insights, *2025 State of Chargebacks*: 50% on average, 54% in the US). That is card chargebacks, not PayPal disputes specifically, but it shows the pattern: defending is worthwhile only with the right evidence, and a lot of effort is spent on cases that are lost anyway.
 
 The expensive failure modes are the opposite of each other: **fighting a case you cannot win** (wasted effort, and a weak response can hurt) and **conceding a case you could have won**. An LLM left alone makes both worse — it will happily write a persuasive "the package was delivered and signed for" when nothing was signed.
 
