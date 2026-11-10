@@ -1,0 +1,1125 @@
+{
+  "model": "pollinations:openai",
+  "started": "2026-11-10T10:00:59.675Z",
+  "finished": "2026-11-10T10:34:46.270Z",
+  "llm_calls": 229,
+  "llm_failed_calls": 149,
+  "signals": {
+    "n_scored": 32,
+    "llm_responses_used": 32,
+    "fell_back_to_heuristic": 3,
+    "injection_flagged": "3/3",
+    "llm_accuracy_pct": {
+      "intent": 90.6,
+      "admits_receipt": 87.5,
+      "mentions_damage": 100,
+      "mentions_address_change": 100
+    },
+    "heuristic_accuracy_pct": {
+      "intent": 75,
+      "admits_receipt": 68.8,
+      "mentions_damage": 100,
+      "mentions_address_change": 100
+    }
+  },
+  "narrative": {
+    "fight_cases": 24,
+    "llm_draft_accepted_first_try": 19,
+    "llm_draft_rejected_by_verifier": 3,
+    "llm_unavailable_or_error": 2,
+    "rejection_problem_kinds": {
+      "claim word": 2,
+      "ungrounded id": 1
+    }
+  },
+  "message_rows": [
+    {
+      "text": "Hi, my order never showed up. It has been almost three weeks and the tracking pa",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Still nothing at my door. I checked with my building manager and there is no par",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "I never got the package. Opening a dispute because nobody replied to my last ema",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Where is my stuff?? paid two weeks ago, zero delivery.",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "The courier says delivered but I have looked everywhere and found nothing. Not i",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Ok so it turns out my neighbour had signed for the parcel and gave it to me yest",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Update: the box was behind my gate the whole time. I have it now. I forgot to ca",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Found it in the garage, the courier left it with my housemate. All good on my si",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "unclear",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "The package arrived this morning, a day after I opened the case. Can you close i",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "unclear",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "I moved house last month and forgot to update my address on PayPal, so the parce",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "You shipped it to the wrong address. I asked in my order note to deliver to my o",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "The tracking shows delivery to my previous address. I changed it at checkout but",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unclear",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": true,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "The mug set arrived smashed. Three of the four are in pieces and the box was cru",
+      "gold": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Vase came cracked right down the middle. I have photos. I want a refund.",
+      "gold": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "damaged",
+        "admits_receipt": false,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Received the bowl but it has a big chip on the rim and the glaze is flaking off.",
+      "gold": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Broken on arrival, the carrier clearly threw the box around. Please refund me.",
+      "gold": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "damaged",
+        "admits_receipt": false,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "The plate is defective: it wobbles and has a hairline crack. This is not what I ",
+      "gold": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "damaged",
+        "admits_receipt": false,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "damaged",
+        "admits_receipt": false,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Honestly the colour is not what I imagined. It is fine quality, I just do not li",
+      "gold": {
+        "intent": "changed_mind",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "changed_mind",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "changed_mind",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Item is nice but my partner bought the same thing for me as a gift. I would like",
+      "gold": {
+        "intent": "changed_mind",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "changed_mind",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "changed_mind",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "It matches the photos and description, no problems with it, but it does not suit",
+      "gold": {
+        "intent": "changed_mind",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "changed_mind",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "changed_mind",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Not damaged at all, just bigger than I expected. Changed my mind.",
+      "gold": {
+        "intent": "changed_mind",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "changed_mind",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "changed_mind",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "I did not make this purchase. Someone must have used my account.",
+      "gold": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "This charge is not mine, I have never heard of your shop.",
+      "gold": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Fraudulent transaction on my PayPal. I did not authorise it and I did not receiv",
+      "gold": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "unauthorized",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "You said I would get a refund last week and nothing has come back to my account.",
+      "gold": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "I returned the parcel two weeks ago and the carrier confirmed delivery to you. S",
+      "gold": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Cancelled my order, was told the refund was on its way. It is not.",
+      "gold": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "refund_pending",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "I was charged twice for the same order. Same day, same amount.",
+      "gold": {
+        "intent": "duplicate_charge",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "duplicate_charge",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "duplicate_charge",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "Two payments went out to your shop but I only meant to buy once.",
+      "gold": {
+        "intent": "duplicate_charge",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "duplicate_charge",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "duplicate_charge",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "It did NOT arrive damaged, the box was perfect, but the package is empty of the ",
+      "gold": {
+        "intent": "not_as_described",
+        "admits_receipt": true,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "I don't think the parcel was damaged by the courier; I think it was packed badly",
+      "gold": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "damaged",
+        "admits_receipt": true,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "damaged",
+        "admits_receipt": false,
+        "mentions_damage": true,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    },
+    {
+      "text": "lol the tracking says delivered, my dog says otherwise. nothing here.",
+      "gold": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection": false
+      },
+      "llm": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "llm:openai",
+        "notes": []
+      },
+      "heuristic": {
+        "intent": "not_received",
+        "admits_receipt": false,
+        "mentions_damage": false,
+        "mentions_address_change": false,
+        "injection_detected": false,
+        "source": "heuristic"
+      }
+    }
+  ],
+  "draft_rows": [
+    {
+      "dispute": "PP-D-15395",
+      "type": "inr_delivered_match",
+      "source": "template",
+      "final_text": "Kiln & Co. Ceramics is responding to this dispute with the records below. Order KC-15395 placed 2026-10-24 for 2 × Tall bud vase, matte sage, total USD 124.50. Shipped 2026-10-25 via FEDEX, tracking number 242312168379. Carrier FEDEX reports delivered on 2026-11-01 to Denver, US, postal code 80202, which matches the shipping address on the transaction. This carrier delivery record shows the order was delivered to the address on the transaction.",
+      "llm_raw": "We confirm the order KC-15395 was placed on 2026-10-24 for 2 × Tall bud vase, matte sage, total USD 124.50. [E1] The item was shipped on 2026-10-25 via FEDEX, tracking number 242312168379. [E2] FEDEX reports delivery on 2026-11-01 to Denver, US, postal code 80202, matching the shipping address on the transaction. [E3] The dispute PP-D-15395 is for USD 124.50 on transaction 8VH44VYECB92EVFAJ. [E0] We are contesting the dispute based on the delivery evidence. [E0]",
+      "llm_rejected": [
+        "claim word \"deliver\" not supported by cited evidence in: \"We are contesting the dispute based on the delivery evidence\""
+      ],
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-27616",
+      "type": "inr_delivered_match",
+      "source": "llm:openai",
+      "final_text": "The order KC-27616 was placed on 2026-10-21 for 1 × Teapot with infuser, total USD 72.50 . The item was shipped on 2026-10-24 via UPS, tracking number 1Z622303901130 . UPS reports the package was delivered on 2026-11-03 to Bristol, GB, postal code BS1 5TR, which matches the shipping address on the transaction . We contest the dispute and provide these records for PayPal’s review .",
+      "llm_raw": "The order KC-27616 was placed on 2026-10-21 for 1 × Teapot with infuser, total USD 72.50 [E1].  \nThe item was shipped on 2026-10-24 via UPS, tracking number 1Z622303901130 [E2].  \nUPS reports the package was delivered on 2026-11-03 to Bristol, GB, postal code BS1 5TR, which matches the shipping address on the transaction [E3].  \nWe contest the dispute and provide these records for PayPal’s review [E0].",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-89814",
+      "type": "inr_delivered_match",
+      "source": "llm:openai",
+      "final_text": "The order KC-89814 was placed on 2026-10-22 for 1 × Large planter with saucer, total USD 97.50. It was shipped on 2026-10-23 via FEDEX, tracking number 616596265548. FEDEX reports the package was delivered on 2026-11-01 to Leeds, GB, postal code LS1 4AP. The delivery address matches the shipping address on the transaction.",
+      "llm_raw": "The order KC-89814 was placed on 2026-10-22 for 1 × Large planter with saucer, total USD 97.50. [E1] It was shipped on 2026-10-23 via FEDEX, tracking number 616596265548. [E2] FEDEX reports the package was delivered on 2026-11-01 to Leeds, GB, postal code LS1 4AP. [E3] The delivery address matches the shipping address on the transaction. [E3]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-23394",
+      "type": "inr_delivered_match",
+      "source": "llm:openai",
+      "final_text": "The dispute PP-D-23394 is for USD 92.50 on transaction 28CE11T6QN6HLJLTG. The order KC-23394 was placed on 2026-10-25 for 2 × Speckled stoneware mug set (4) with a total of USD 92.50. The order was shipped on 2026-10-28 via UPS, tracking number 1Z408892417894. UPS reports the package was delivered on 2026-11-02 to Leeds, GB, postal code LS1 4AP, which matches the shipping address on the transaction.",
+      "llm_raw": "The dispute PP-D-23394 is for USD 92.50 on transaction 28CE11T6QN6HLJLTG. [E0]  \nThe order KC-23394 was placed on 2026-10-25 for 2 × Speckled stoneware mug set (4) with a total of USD 92.50. [E1]  \nThe order was shipped on 2026-10-28 via UPS, tracking number 1Z408892417894. [E2]  \nUPS reports the package was delivered on 2026-11-02 to Leeds, GB, postal code LS1 4AP, which matches the shipping address on the transaction. [E3]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-29814",
+      "type": "inr_buyer_admits",
+      "source": "llm:openai",
+      "final_text": "The order KC-29814 was placed on 2026-10-25 for 1 × Large planter with saucer, total USD 97.50. The item was shipped on 2026-10-28 via UPS, tracking number 1Z412009930990. UPS reports the package was delivered on 2026-11-07 to Portland, US, postal code 97205, matching the shipping address on the transaction. The transaction has been completed.",
+      "llm_raw": "The order KC-29814 was placed on 2026-10-25 for 1 × Large planter with saucer, total USD 97.50. [E1] The item was shipped on 2026-10-28 via UPS, tracking number 1Z412009930990. [E2] UPS reports the package was delivered on 2026-11-07 to Portland, US, postal code 97205, matching the shipping address on the transaction. [E3] The transaction has been completed. [E2][E3]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-58819",
+      "type": "inr_buyer_admits",
+      "source": "llm:openai",
+      "final_text": "The order KC-58819 was placed on 2026-10-19 for 1 × Speckled stoneware mug set (4) totaling USD 50.50. The item was shipped on 2026-10-20 via UPS, tracking number 1Z238069983524. UPS reports the package was delivered on 2026-11-05 to Leeds, GB, postal code LS1 4AP, matching the shipping address on the transaction. We are prepared to refund the buyer or contest the dispute with records as per PayPal policy.",
+      "llm_raw": "The order KC-58819 was placed on 2026-10-19 for 1 × Speckled stoneware mug set (4) totaling USD 50.50. [E1]  \nThe item was shipped on 2026-10-20 via UPS, tracking number 1Z238069983524. [E2]  \nUPS reports the package was delivered on 2026-11-05 to Leeds, GB, postal code LS1 4AP, matching the shipping address on the transaction. [E3]  \nWe are prepared to refund the buyer or contest the dispute with records as per PayPal policy. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-64070",
+      "type": "inr_buyer_admits",
+      "source": "llm:openai",
+      "final_text": "The dispute PP-D-64070 concerns a transaction of USD 97.50 on transaction 6ATT5056WXNHMMG21. Order KC-64070 was placed on 2026-10-20 for 1 × Large planter with saucer, total USD 97.50. The item was shipped on 2026-10-22 via DHL, tracking number 531509535638. DHL reports the package was delivered on 2026-11-06 to Vancouver, CA, postal code V6B 1A1, matching the shipping address on the transaction.",
+      "llm_raw": "The dispute PP-D-64070 concerns a transaction of USD 97.50 on transaction 6ATT5056WXNHMMG21. [E0] Order KC-64070 was placed on 2026-10-20 for 1 × Large planter with saucer, total USD 97.50. [E1] The item was shipped on 2026-10-22 via DHL, tracking number 531509535638. [E2] DHL reports the package was delivered on 2026-11-06 to Vancouver, CA, postal code V6B 1A1, matching the shipping address on the transaction. [E3]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-11954",
+      "type": "inr_buyer_admits",
+      "source": "llm:openai",
+      "final_text": "The order KC-11954 was placed on 2026-10-20 for 1 × Teapot with infuser, total USD 72.50, and was shipped on 2026-10-23 via DHL, tracking number 610219431953. Carrier DHL reports delivery on 2026-11-07 to Berlin, DE, postal code 10115, which matches the shipping address on the transaction. The dispute PP-D-11954 is for USD 72.50 on transaction 97PUDJ3SGJNNNZENU.",
+      "llm_raw": "The order KC-11954 was placed on 2026-10-20 for 1 × Teapot with infuser, total USD 72.50, and was shipped on 2026-10-23 via DHL, tracking number 610219431953. [E1][E2] Carrier DHL reports delivery on 2026-11-07 to Berlin, DE, postal code 10115, which matches the shipping address on the transaction. [E3] The dispute PP-D-11954 is for USD 72.50 on transaction 97PUDJ3SGJNNNZENU. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-64663",
+      "type": "unauth_delivered_match",
+      "source": "template",
+      "final_text": "Kiln & Co. Ceramics is responding to this dispute with the records below. Order KC-64663 placed 2026-10-23 for 2 × Tall bud vase, matte sage, total USD 124.50. Shipped 2026-10-24 via FEDEX, tracking number 358755372918. Carrier FEDEX reports delivered on 2026-10-30 to Leeds, GB, postal code LS1 4AP, which matches the shipping address on the transaction. This carrier delivery record shows the order was delivered to the address on the transaction.",
+      "llm_raw": null,
+      "llm_rejected": null,
+      "llm_error": "LLM HTTP 402"
+    },
+    {
+      "dispute": "PP-D-58558",
+      "type": "unauth_delivered_match",
+      "source": "llm:openai",
+      "final_text": "The order KC-58558 was placed on 2026-10-26 for 1 × Dinner plate set (6) totaling USD 136.50. It was shipped on 2026-10-29 via DHL, tracking number 430681878399. DHL reports delivery on 2026-11-03 to Bristol, GB, postal code BS1 5TR, which matches the shipping address on the transaction. We contest the dispute PP-D-58558 as the item was delivered according to carrier records.",
+      "llm_raw": "The order KC-58558 was placed on 2026-10-26 for 1 × Dinner plate set (6) totaling USD 136.50. [E1]  \nIt was shipped on 2026-10-29 via DHL, tracking number 430681878399. [E2]  \nDHL reports delivery on 2026-11-03 to Bristol, GB, postal code BS1 5TR, which matches the shipping address on the transaction. [E3]  \nWe contest the dispute PP-D-58558 as the item was delivered according to carrier records. [E0][E2][E3]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-10359",
+      "type": "unauth_delivered_match",
+      "source": "llm:openai",
+      "final_text": "The dispute PP-D-10359 concerns USD 50.50 on transaction 57SMK7EKTNAMLUL59. Order KC-10359 was placed on 2026-10-17 for 1 × Speckled stoneware mug set (4) totaling USD 50.50. The item was shipped on 2026-10-18 via DHL, tracking number 978330329120. DHL reports the package was delivered on 2026-10-23 to Toronto, CA, postal code M5V 2T6, matching the shipping address on the transaction. We are available to discuss further if needed.",
+      "llm_raw": "The dispute PP-D-10359 concerns USD 50.50 on transaction 57SMK7EKTNAMLUL59. [E0]  \nOrder KC-10359 was placed on 2026-10-17 for 1 × Speckled stoneware mug set (4) totaling USD 50.50. [E1]  \nThe item was shipped on 2026-10-18 via DHL, tracking number 978330329120. [E2]  \nDHL reports the package was delivered on 2026-10-23 to Toronto, CA, postal code M5V 2T6, matching the shipping address on the transaction. [E3]  \nWe are available to discuss further if needed. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-31473",
+      "type": "unauth_delivered_match",
+      "source": "llm:openai",
+      "final_text": "The dispute PP-D-31473 is for USD 97.50 on transaction 4NKT71ACBRK2NUJWQ. Order KC-31473 was placed on 2026-10-21 for 1 × Large planter with saucer, total USD 97.50. The item was shipped on 2026-10-22 via UPS, tracking number 1Z121642386382. UPS reports the package was delivered on 2026-10-28 to Toronto, CA, postal code M5V 2T6, which matches the shipping address on the transaction.",
+      "llm_raw": "The dispute PP-D-31473 is for USD 97.50 on transaction 4NKT71ACBRK2NUJWQ. [E0]  \nOrder KC-31473 was placed on 2026-10-21 for 1 × Large planter with saucer, total USD 97.50. [E1]  \nThe item was shipped on 2026-10-22 via UPS, tracking number 1Z121642386382. [E2]  \nUPS reports the package was delivered on 2026-10-28 to Toronto, CA, postal code M5V 2T6, which matches the shipping address on the transaction. [E3]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-95324",
+      "type": "snad_changed_mind",
+      "source": "llm:openai",
+      "final_text": "The dispute PP-D-95324 is for USD 92.50 on transaction 60BAYSFCUF0H81FE5. The order KC-95324 was placed on 2026-10-20 for 2 × Speckled stoneware mug set (4) totaling USD 92.50. The listing describes the set as 350 ml stoneware mugs, speckled cream glaze, dishwasher safe. The return policy states unused items may be returned within 30 days of delivery for a refund; the buyer pays return shipping. Items damaged in transit are refunded in full, and all items are made to order and may vary slightly in glaze colour.",
+      "llm_raw": "The dispute PP-D-95324 is for USD 92.50 on transaction 60BAYSFCUF0H81FE5. [E0]  \nThe order KC-95324 was placed on 2026-10-20 for 2 × Speckled stoneware mug set (4) totaling USD 92.50. [E1]  \nThe listing describes the set as 350 ml stoneware mugs, speckled cream glaze, dishwasher safe. [E4]  \nThe return policy states unused items may be returned within 30 days of delivery for a refund; the buyer pays return shipping. [E5]  \nItems damaged in transit are refunded in full, and all items are made to order and may vary slightly in glaze colour. [E5]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-26126",
+      "type": "snad_changed_mind",
+      "source": "llm:openai",
+      "final_text": "The order KC-26126 was placed on 2026-10-23 for 2 × Teapot with infuser, total USD 136.50. The listing for each teapot is a 1 L stoneware teapot with stainless infuser, ash glaze. According to our return policy, unused items may be returned within 30 days of delivery for a refund and the buyer pays return shipping; items damaged in transit are refunded in full. The dispute PP-D-26126 is for USD 136.50 on transaction 701TTQ4ZF4127QTJ5, and we are prepared to refund or contest with records.",
+      "llm_raw": "The order KC-26126 was placed on 2026-10-23 for 2 × Teapot with infuser, total USD 136.50. [E1]  \nThe listing for each teapot is a 1 L stoneware teapot with stainless infuser, ash glaze. [E4]  \nAccording to our return policy, unused items may be returned within 30 days of delivery for a refund and the buyer pays return shipping; items damaged in transit are refunded in full. [E5]  \nThe dispute PP-D-26126 is for USD 136.50 on transaction 701TTQ4ZF4127QTJ5, and we are prepared to refund or contest with records. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-49485",
+      "type": "snad_changed_mind",
+      "source": "llm:openai",
+      "final_text": "We confirm that transaction 3FGGTBC6TT60LA0NL for USD 160.50 was for order KC-49485 placed 2026-10-22. The order consisted of 2 × Large serving bowl, 32 cm stoneware serving bowl, satin white glaze. Our return policy allows unused items to be returned within 30 days of delivery for a refund, with the buyer covering return shipping, and items damaged in transit are refunded in full. We are prepared to provide any additional records related to this transaction upon request.",
+      "llm_raw": "We confirm that transaction 3FGGTBC6TT60LA0NL for USD 160.50 was for order KC-49485 placed 2026-10-22. [E0][E1]  \nThe order consisted of 2 × Large serving bowl, 32 cm stoneware serving bowl, satin white glaze. [E1][E4]  \nOur return policy allows unused items to be returned within 30 days of delivery for a refund, with the buyer covering return shipping, and items damaged in transit are refunded in full. [E5]  \nWe are prepared to provide any additional records related to this transaction upon request. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-22824",
+      "type": "snad_changed_mind",
+      "source": "template",
+      "final_text": "Kiln & Co. Ceramics is responding to this dispute with the records below. Order KC-22824 placed 2026-10-26 for 1 × Tall bud vase, matte sage, total USD 66.50. Listing: Hand-thrown 28 cm bud vase, matte sage glaze, waterproof interior. Return policy: Unused items may be returned within 30 days of delivery for a refund; the buyer pays return shipping. Items damaged in transit are refunded in full. All items are made to order and may vary slightly in glaze colour. The item was sold as described in the listing.",
+      "llm_raw": "Thank you for contacting us regarding dispute PP-D-22824. [E0]  \nThe order KC-22824 for 1 × Tall bud vase, matte sage, was placed on 2026-10-26 and shipped as described in the listing. [E1][E4]  \nOur return policy allows unused items to be returned within 30 days of delivery for a refund and refunds in full for items damaged in transit. [E5]  \nWe have no record of damage or return and request that the dispute be closed in our favor. [E0]",
+      "llm_rejected": [
+        "claim word \"ship\" not supported by cited evidence in: \"The order KC-22824 for 1 × Tall bud vase, matte sage, was pl\""
+      ],
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-79204",
+      "type": "cnp_refund_issued",
+      "source": "template",
+      "final_text": "Kiln & Co. Ceramics is responding to this dispute with the records below. Order KC-79204 placed 2026-10-24 for 2 × Tall bud vase, matte sage, total USD 124.50. Refund 4L82YH54RK8KQ1EQM of USD 124.50 completed 2026-11-05. The refund above was completed in PayPal.",
+      "llm_raw": null,
+      "llm_rejected": null,
+      "llm_error": "LLM HTTP 400"
+    },
+    {
+      "dispute": "PP-D-17186",
+      "type": "cnp_refund_issued",
+      "source": "llm:openai",
+      "final_text": "The order KC-17186 was placed on 2026-10-24 for 1 × Teapot with infuser, total USD 72.50. A refund of USD 72.50 was processed under refund ID 9A8WB9YZRTQ3NBM9G on 2026-11-03. The dispute PP-D-17186 is for USD 72.50 on transaction 9GC19MHVJTKNEBJQ5.",
+      "llm_raw": "The order KC-17186 was placed on 2026-10-24 for 1 × Teapot with infuser, total USD 72.50. [E1] A refund of USD 72.50 was processed under refund ID 9A8WB9YZRTQ3NBM9G on 2026-11-03. [E4] The dispute PP-D-17186 is for USD 72.50 on transaction 9GC19MHVJTKNEBJQ5. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-21021",
+      "type": "cnp_refund_issued",
+      "source": "llm:openai",
+      "final_text": "The order KC-21021 for 1 × Teapot with infuser was placed on 2026-10-23 for USD 72.50. A refund of USD 72.50 was processed under refund ID 1H9HA6M40GX1DKMR1 on 2026-10-31. The refund corresponds to the transaction 3SVD0PLGZAZE52UC2 referenced in dispute PP-D-21021.",
+      "llm_raw": "The order KC-21021 for 1 × Teapot with infuser was placed on 2026-10-23 for USD 72.50. [E1] A refund of USD 72.50 was processed under refund ID 1H9HA6M40GX1DKMR1 on 2026-10-31. [E4] The refund corresponds to the transaction 3SVD0PLGZAZE52UC2 referenced in dispute PP-D-21021. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-84277",
+      "type": "cnp_refund_issued",
+      "source": "llm:openai",
+      "final_text": "The dispute PP-D-84277 is for USD 264.50 on transaction 5WACA5XXPZTCBQ9X4. Order KC-84277 was placed 2026-10-26 for 2 × Dinner plate set (6) totaling USD 264.50. Refund 1EALSB50826H93TK5 of USD 264.50 was completed on 2026-11-04.",
+      "llm_raw": "The dispute PP-D-84277 is for USD 264.50 on transaction 5WACA5XXPZTCBQ9X4. [E0] Order KC-84277 was placed 2026-10-26 for 2 × Dinner plate set (6) totaling USD 264.50. [E1] Refund 1EALSB50826H93TK5 of USD 264.50 was completed on 2026-11-04. [E4]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-45265",
+      "type": "dup_two_orders",
+      "source": "template",
+      "final_text": "Kiln & Co. Ceramics is responding to this dispute with the records below. Order KC-45265 placed 2026-10-17 for 2 × Tall bud vase, matte sage, total USD 124.50. Shipped 2026-10-20 via FEDEX, tracking number 487321356935. Order KC-45266 (PayPal transaction 43VFYCDJBSVZE0FX7) is a separate order placed 2026-10-17 for the same items; it shipped 2026-10-20 via FEDEX, tracking number 487321356937. The two charges correspond to two separate orders, each shipped separately.",
+      "llm_raw": "The dispute refers to transaction 43VFYCDJBSVZE0F4 for USD 124.50. [E0]  \nOrder KC-45265 was placed on 2026-10-17 for 2 × Tall bud vase, matte sage, total USD 124.50. [E1]  \nThe order was shipped on 2026-10-20 via FEDEX, tracking number 487321356935. [E2]",
+      "llm_rejected": [
+        "ungrounded id \"43VFYCDJBSVZE0F4\" in: \"The dispute refers to transaction 43VFYCDJBSVZE0F4 for USD 1\""
+      ],
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-84006",
+      "type": "dup_two_orders",
+      "source": "llm:openai",
+      "final_text": "The order KC-84006 was placed on 2026-10-20 for 1 × Teapot with infuser, total USD 72.50. The item was shipped on 2026-10-21 via FEDEX, tracking number 812238064240. The PayPal dispute PP-D-84006 references transaction 424LVPQUQ79Q50E98, which corresponds to this order. A separate order KC-84007 (transaction 424LVPQUQ79Q50EX7) was also placed on 2026-10-20 and shipped on 2026-10-21 via FEDEX, tracking number 812238064247.",
+      "llm_raw": "The order KC-84006 was placed on 2026-10-20 for 1 × Teapot with infuser, total USD 72.50. [E1]  \nThe item was shipped on 2026-10-21 via FEDEX, tracking number 812238064240. [E2]  \nThe PayPal dispute PP-D-84006 references transaction 424LVPQUQ79Q50E98, which corresponds to this order. [E0]  \nA separate order KC-84007 (transaction 424LVPQUQ79Q50EX7) was also placed on 2026-10-20 and shipped on 2026-10-21 via FEDEX, tracking number 812238064247. [E6]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-49265",
+      "type": "dup_two_orders",
+      "source": "llm:openai",
+      "final_text": "We confirm that order KC-49265 was placed on 2026-10-26 for 2 × Tall bud vase, matte sage, total USD 124.50. The order was shipped on 2026-10-28 via FEDEX, tracking number 592625064706. We have provided the tracking information to the buyer. We are willing to provide further documentation if needed.",
+      "llm_raw": "We confirm that order KC-49265 was placed on 2026-10-26 for 2 × Tall bud vase, matte sage, total USD 124.50. [E1] The order was shipped on 2026-10-28 via FEDEX, tracking number 592625064706. [E2] We have provided the tracking information to the buyer. [E2] We are willing to provide further documentation if needed. [E0]",
+      "llm_rejected": null,
+      "llm_error": null
+    },
+    {
+      "dispute": "PP-D-74053",
+      "type": "dup_two_orders",
+      "source": "llm:openai",
+      "final_text": "The order KC-74053 was placed on 2026-10-25 for 1 × Large planter with saucer, total USD 97.50. It was shipped on 2026-10-28 via UPS, tracking number 1Z431628736949. The dispute PP-D-74053 relates to PayPal transaction 5D6FK67CRACYJ72WX for USD 97.50. A separate order KC-74054 was placed on 2026-10-25 for the same items and shipped on 2026-10-28 via UPS, tracking number 1Z431628736947.",
+      "llm_raw": "The order KC-74053 was placed on 2026-10-25 for 1 × Large planter with saucer, total USD 97.50. [E1] It was shipped on 2026-10-28 via UPS, tracking number 1Z431628736949. [E2] The dispute PP-D-74053 relates to PayPal transaction 5D6FK67CRACYJ72WX for USD 97.50. [E0] A separate order KC-74054 was placed on 2026-10-25 for the same items and shipped on 2026-10-28 via UPS, tracking number 1Z431628736947. [E6]",
+      "llm_rejected": null,
+      "llm_error": null
+    }
+  ]
+}

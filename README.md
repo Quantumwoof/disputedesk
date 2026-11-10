@@ -103,7 +103,19 @@ Full diagram, component table and decision rules: [docs/ARCHITECTURE.md](docs/AR
 
 **Real LLM run** — `LLM_PROVIDER=pollinations npm run eval:llm` — free keyless `gpt-oss-20b` via Pollinations, results in [eval/results/llm-run.json](eval/results/llm-run.json):
 
-LLM_RUN_PLACEHOLDER
+Run on 10 Nov 2026 (11:00–11:34 Africa/Lagos), model `pollinations:openai` (gpt-oss-20b, anonymous free tier). 229 HTTP calls were made, 149 of which failed or were retried (the anonymous tier rate-limits and sometimes answers 400/402/429); failures fall back to the deterministic path, which is part of what is being tested.
+
+| Test | Result |
+|---|---|
+| Buyer-message reading, 32 labelled non-attack messages: intent | **LLM 90.6%** vs. offline heuristic 75.0% |
+| … admits receipt | **LLM 87.5%** vs. heuristic 68.8% |
+| … mentions damage / mentions address change | 100% / 100% for both |
+| Injection messages flagged (3 attacks in the set) | 3/3 (the regex veto runs on top of the model) |
+| Drafting for the 24 FIGHT cases: LLM draft passed the verifier first try | **19/24** |
+| … rejected by the verifier and replaced by the template | **3/24** (2× an unsupported claim word such as "ship"/"deliver" without cited support, 1× an ID that is not in the evidence) |
+| … LLM unavailable (HTTP 400/402) so the template was used | 2/24 |
+
+The three rejections are the point of the verifier: those drafts would otherwise have been shown to a human as if fine. The verifier is deliberately strict (a claim word like "delivery" needs cited support), so some rejections are conservative false alarms; in every case the fallback template is submitted instead. This is one run on a small synthetic set with a small model; treat it as indicative, not as a benchmark. Raw outputs: `eval/results/llm-run.json`.
 
 ## AI use and safety, in one place
 
