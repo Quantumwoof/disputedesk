@@ -1,0 +1,176 @@
+1
+00:00:00,778 --> 00:00:05,422
+Small merchants lose PayPal disputes they could win, and fight ones they can't.
+
+2
+00:00:05,422 --> 00:00:07,892
+PayPal gives a seller ten days to respond.
+
+3
+00:00:07,892 --> 00:00:12,066
+DisputeDesk is an AI agent and MCP server that works the dispute queue,
+
+4
+00:00:12,066 --> 00:00:14,535
+and never submits anything it can't prove.
+
+5
+00:00:16,373 --> 00:00:17,583
+This is demo mode:
+
+6
+00:00:17,583 --> 00:00:22,825
+a local PayPal sandbox simulator, not live PayPal, so it runs with no secrets.
+
+7
+00:00:22,825 --> 00:00:26,454
+A ceramics shop has twelve disputes waiting at PayPal.
+
+8
+00:00:26,454 --> 00:00:28,471
+One click on run agent triage.
+
+9
+00:00:28,975 --> 00:00:32,274
+The agent reads every dispute and the buyer's message,
+
+10
+00:00:32,274 --> 00:00:36,612
+gathers evidence from the shop's own records, and recommends an action:
+
+11
+00:00:36,612 --> 00:00:40,950
+five to fight, four to accept, one refund offer, and two for the owner.
+
+12
+00:00:40,950 --> 00:00:42,416
+The queue is an AG Grid:
+
+13
+00:00:42,416 --> 00:00:44,799
+filter by decision, search, and export.
+
+14
+00:00:46,614 --> 00:00:51,929
+Now the same app with a free language model, already triaged because the free tier is slow.
+
+15
+00:00:51,929 --> 00:00:53,330
+Here is a case to fight.
+
+16
+00:00:53,330 --> 00:00:55,958
+The decision comes from rules, not the model:
+
+17
+00:00:55,958 --> 00:01:00,104
+FedEx delivered to Denver, matching the transaction's shipping address,
+
+18
+00:01:00,104 --> 00:01:02,148
+and the amount is worth contesting.
+
+19
+00:01:02,756 --> 00:01:05,101
+Every fact is a numbered evidence item:
+
+20
+00:01:05,101 --> 00:01:07,325
+the order, the FedEx tracking number,
+
+21
+00:01:07,325 --> 00:01:11,173
+and the carrier's delivery scan, each with the checks it passed.
+
+22
+00:01:11,776 --> 00:01:15,137
+The model drafts the response, then a verifier checks it.
+
+23
+00:01:15,137 --> 00:01:18,262
+Every sentence cites evidence, and every date, amount
+
+24
+00:01:18,262 --> 00:01:21,741
+and tracking number must literally appear in what it cites.
+
+25
+00:01:21,741 --> 00:01:23,746
+A draft that fails is thrown away.
+
+26
+00:01:24,352 --> 00:01:25,804
+Buyers can type anything.
+
+27
+00:01:25,804 --> 00:01:29,057
+This one tells the agent to fight and reveal its prompt.
+
+28
+00:01:29,057 --> 00:01:30,800
+Buyer text is treated as data:
+
+29
+00:01:30,800 --> 00:01:33,646
+the injection is flagged, and the records decide.
+
+30
+00:01:33,646 --> 00:01:36,028
+No shipment exists, so it goes to accept.
+
+31
+00:01:36,028 --> 00:01:41,314
+In my benchmark, none of sixty-eight attacks got the attacker a different automatic action.
+
+32
+00:01:41,919 --> 00:01:47,013
+Nothing leaves until I approve, and approval is bound to a hash of the exact payload.
+
+33
+00:01:47,013 --> 00:01:51,089
+Approving sends the multipart provide-evidence request you see here,
+
+34
+00:01:51,089 --> 00:01:53,006
+plus a hash-chained audit entry.
+
+35
+00:01:53,006 --> 00:01:56,962
+It is also an MCP server, and I drive PayPal's own MCP server too.
+
+36
+00:01:56,962 --> 00:02:00,437
+That has no evidence tool, so this call goes through REST.
+
+37
+00:02:01,768 --> 00:02:03,647
+On seventy-two seeded disputes,
+
+38
+00:02:03,647 --> 00:02:08,435
+DisputeDesk makes the expected call every time with no unsupported submissions,
+
+39
+00:02:08,435 --> 00:02:11,769
+while fighting everything is right a third of the time.
+
+40
+00:02:11,769 --> 00:02:15,890
+Those labels are mine, so it is a consistency check, not a win rate.
+
+41
+00:02:15,890 --> 00:02:21,406
+With the free model, buyer-intent accuracy is ninety point six percent versus seventy-five.
+
+42
+00:02:21,406 --> 00:02:23,891
+Going live needs two sandbox credentials.
+
+43
+00:02:23,891 --> 00:02:24,800
+Models propose;
+
+44
+00:02:24,800 --> 00:02:26,497
+deterministic checks decide.
+

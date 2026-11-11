@@ -4,7 +4,8 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const money = (m) => `${m.currency_code} ${Number(m.value).toFixed(2)}`;
 const REASON = { MERCHANDISE_OR_SERVICE_NOT_RECEIVED: 'Item not received', UNAUTHORISED: 'Unauthorised', MERCHANDISE_OR_SERVICE_NOT_AS_DESCRIBED: 'Not as described', CREDIT_NOT_PROCESSED: 'Credit not processed', DUPLICATE_TRANSACTION: 'Duplicate charge' };
 const ACTION = { FIGHT: 'Fight', ACCEPT_CLAIM: 'Accept & refund', OFFER_REFUND: 'Offer refund', HUMAN_REVIEW: 'Needs you' };
-let S = null, grid = null, selected = null, tab = 'why', drawerTab = 'calls';
+let S = null, grid = null, selected = null, tab = 'why', drawerTab = 'calls', actionFilter = 'ALL';
+const COLSTATE_KEY = 'disputedesk.grid.columns.v1';
 
 async function api(path, opts) {
   const r = await fetch(path, opts && { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(opts) });
@@ -36,29 +37,59 @@ function renderKpis() {
   ].map(([a, b, c]) => `<div class="kpi"><small>${a}</small><b>${b}</b><br><span>${c}</span></div>`).join('');
 }
 
+const STATUS = { proposed: 'awaiting you', approved: 'approved', submitted: 'sent ✓', rejected: 'rejected', failed: 'failed' };
+const pinned = (p) => !!p.node?.rowPinned;
+
 function gridCols() {
   return [
-    { headerName: 'Due', field: 'hours_left', width: 74, sort: 'asc', cellRenderer: (p) => `<span class="${p.value < 24 ? 'urgent' : p.value < 72 ? 'soon' : ''}">${hoursText(p.value)}</span>` },
-    { headerName: 'Dispute', field: 'dispute_id', width: 108 },
-    { headerName: 'Buyer', field: 'buyer', flex: 1, minWidth: 110 },
-    { headerName: 'Reason', field: 'reason', flex: 1, minWidth: 120, valueFormatter: (p) => REASON[p.value] ?? p.value },
-    { headerName: 'Amount', field: 'amount', width: 92, valueGetter: (p) => Number(p.data.amount.value), valueFormatter: (p) => `$${p.value.toFixed(2)}`, type: 'rightAligned' },
-    { headerName: 'Agent says', field: 'action', width: 128, cellRenderer: (p) => `<span class="pill ${p.value}">${ACTION[p.value]}</span>` },
-    { headerName: 'Evidence', field: 'strength', width: 96, cellRenderer: (p) => `<div style="display:flex;align-items:center;gap:6px;height:100%"><div style="flex:1;height:6px;background:#223052;border-radius:3px"><div style="width:${p.value}%;height:6px;border-radius:3px;background:${p.value > 70 ? '#2ecc8f' : p.value > 40 ? '#ffc24b' : '#ff6b6b'}"></div></div><span style="font-size:11px;color:#8fa0c4">${p.value}%</span></div>` },
-    { headerName: 'Status', field: 'status', width: 100, valueFormatter: (p) => ({ proposed: 'awaiting you', approved: 'approved', submitted: 'sent ✓', rejected: 'rejected', failed: 'failed' }[p.value] ?? p.value) },
+    { headerName: 'Due', field: 'hours_left', width: 84, sort: 'asc', suppressHeaderFilterButton: true, filter: 'agNumberColumnFilter', headerTooltip: 'Hours left before PayPal resolves the case for the buyer', cellRenderer: (p) => pinned(p) ? '' : `<span class="${p.value < 24 ? 'urgent' : p.value < 72 ? 'soon' : ''}">${hoursText(p.value)}</span>`, valueFormatter: (p) => (p.value == null ? '' : hoursText(p.value)) },
+    { headerName: 'Dispute', field: 'dispute_id', width: 114, filter: 'agTextColumnFilter', suppressHeaderFilterButton: true, pinned: 'left' },
+    { headerName: 'Buyer', field: 'buyer', flex: 1, minWidth: 120, filter: 'agTextColumnFilter', suppressHeaderFilterButton: true },
+    { headerName: 'Reason', field: 'reason', flex: 1, minWidth: 130, filter: 'agTextColumnFilter', suppressHeaderFilterButton: true, filterValueGetter: (p) => REASON[p.data?.reason] ?? p.data?.reason, valueFormatter: (p) => REASON[p.value] ?? p.value ?? '', tooltipValueGetter: (p) => REASON[p.value] ?? p.value },
+    { headerName: 'Amount', field: 'amount', width: 104, filter: 'agNumberColumnFilter', valueGetter: (p) => Number(p.data.amount.value), valueFormatter: (p) => (p.value == null ? '' : `$${p.value.toFixed(2)}`), type: 'rightAligned', cellClass: (p) => (pinned(p) ? 'pin-total' : '') },
+    { headerName: 'Agent says', field: 'action', width: 124, suppressHeaderFilterButton: true, filter: 'agTextColumnFilter', valueFormatter: (p) => ACTION[p.value] ?? '', cellRenderer: (p) => (p.value ? `<span class="pill ${p.value}">${ACTION[p.value]}</span>` : '') },
+    { headerName: 'Evidence', field: 'strength', width: 96, suppressHeaderFilterButton: true, filter: 'agNumberColumnFilter', headerTooltip: 'Checklist coverage of the evidence PayPal needs, not a win probability', valueFormatter: (p) => (p.value == null ? '' : `${p.value}%`), cellRenderer: (p) => pinned(p) ? '' : `<div style="display:flex;align-items:center;gap:6px;height:100%"><div style="flex:1;height:6px;background:#223052;border-radius:3px"><div style="width:${p.value}%;height:6px;border-radius:3px;background:${p.value > 70 ? '#2ecc8f' : p.value > 40 ? '#ffc24b' : '#ff6b6b'}"></div></div><span style="font-size:11px;color:#8fa0c4">${p.value}%</span></div>` },
+    { headerName: 'Status', field: 'status', flex: 1, minWidth: 108, suppressHeaderFilterButton: true, filter: 'agTextColumnFilter', enableCellChangeFlash: true, valueFormatter: (p) => STATUS[p.value] ?? p.value ?? '' },
   ];
+}
+
+// AG Grid Community features used: sorting, resizing, column + quick + external filters, pinned columns and pinned totals row,
+// custom cell renderers, row-class rules, cell-change flash on approval, tooltips, CSV export, persisted column state.
+const visibleCases = () => { const out = []; grid?.forEachNodeAfterFilter((n) => out.push(n.data)); return out; };
+function updateTotals() {
+  if (!grid) return;
+  const rows = visibleCases();
+  const sum = rows.reduce((s, c) => s + Number(c.amount.value), 0);
+  grid.setGridOption('pinnedBottomRowData', [{ dispute_id: `${rows.length} shown`, buyer: 'Total', amount: { value: sum.toFixed(2) } }]);
+}
+function renderChips() {
+  const n = (a) => S.cases.filter((c) => c.action === a).length;
+  const defs = [['ALL', `All ${S.cases.length}`], ...Object.entries(ACTION).map(([k, v]) => [k, `${v} ${n(k)}`])];
+  $('#chips').innerHTML = defs.map(([k, v]) => `<button data-a="${k}" class="${actionFilter === k ? 'on' : ''}" aria-pressed="${actionFilter === k}">${v}</button>`).join('');
+  document.querySelectorAll('#chips button').forEach((b) => (b.onclick = () => { actionFilter = b.dataset.a; renderChips(); grid.onFilterChanged(); }));
 }
 
 function renderGrid() {
   if (!grid) {
+    let initialState;
+    try { initialState = JSON.parse(localStorage.getItem(COLSTATE_KEY) || 'null') ?? undefined; } catch { /* ignore */ }
+    const save = () => { try { localStorage.setItem(COLSTATE_KEY, JSON.stringify(grid.getColumnState())); } catch { /* ignore */ } };
     grid = agGrid.createGrid($('#grid'), {
       theme: agGrid.themeQuartz.withPart(agGrid.colorSchemeDark).withParams({ backgroundColor: '#111a2e', headerBackgroundColor: '#16213a', borderColor: '#223052', fontSize: 13, accentColor: '#009cde' }),
       columnDefs: gridCols(), rowData: S.cases, rowSelection: { mode: 'singleRow', checkboxes: false, enableClickSelection: true },
-      getRowId: (p) => p.data.id, defaultColDef: { sortable: true, resizable: true }, animateRows: true,
+      getRowId: (p) => p.data.id, defaultColDef: { sortable: true, resizable: true, filter: true }, animateRows: true, tooltipShowDelay: 400,
+      rowClassRules: { 'row-urgent': (p) => p.data && p.data.hours_left < 24 && !['submitted', 'rejected'].includes(p.data.status) },
+      isExternalFilterPresent: () => actionFilter !== 'ALL',
+      doesExternalFilterPass: (n) => actionFilter === 'ALL' || n.data.action === actionFilter,
+      onFilterChanged: updateTotals, onSortChanged: save, onColumnResized: (e) => e.finished && save(), onColumnMoved: save,
       onRowSelected: (e) => { if (e.node.isSelected() && selected !== e.data.id) { selected = e.data.id; tab = 'why'; renderDetail(); } },
       overlayNoRowsTemplate: '<span style="color:#8fa0c4">No cases yet. Click "Run agent triage".</span>',
     });
+    if (Array.isArray(initialState)) grid.applyColumnState({ state: initialState, applyOrder: true });
+    $('#qf').oninput = (e) => grid.setGridOption('quickFilterText', e.target.value);
+    $('#btn-csv').onclick = () => grid.exportDataAsCsv({ fileName: 'disputedesk-queue.csv' });
   } else grid.setGridOption('rowData', S.cases);
+  renderChips(); updateTotals();
   $('#queue-sub').textContent = `${S.merchant ?? ''} · sorted by deadline`;
   if (selected) grid.forEachNode((n) => { if (n.data.id === selected) n.setSelected(true, false, 'api'); });
 }
@@ -81,7 +112,7 @@ function renderDetail() {
     ${done ? `<span class="done">✔ Sent to PayPal · ${esc(c.proposal.call)}</span>` : rejected ? '<span class="muted">Rejected by you; nothing was sent.</span>' : `
       <span class="note">${c.action === 'HUMAN_REVIEW' ? 'The agent will not act on this one.' : 'Nothing leaves this machine until you approve. Approval is bound to this exact payload (digest ' + c.proposal.digest.slice(0, 8) + ').'}</span>
       <button class="stop" id="btn-reject">Reject</button>
-      <button class="go" id="btn-approve" ${c.action === 'FIGHT' && !c.draft.verified ? 'disabled' : ''}>${c.action === 'HUMAN_REVIEW' ? 'Mark reviewed' : 'Approve &amp; ' + callLabel.toLowerCase()}</button>`}
+      <button class="go" id="btn-approve" ${c.action === 'FIGHT' && !c.draft.verified ? 'disabled' : ''}>${c.action === 'HUMAN_REVIEW' ? 'Mark reviewed' : 'Approve &amp; ' + callLabel.replace(/^./, (ch) => ch.toLowerCase())}</button>`}
   </div>`;
   el.querySelectorAll('.tabs button').forEach((b) => (b.onclick = () => { tab = b.dataset.t; renderDetail(); }));
   const ap = $('#btn-approve'); if (ap) ap.onclick = async () => { ap.disabled = true; ap.textContent = 'Sending…'; try { await api('/api/approve', { id: c.id }); } catch (e) { alert(e.message); } await refresh(); };
@@ -112,7 +143,7 @@ function paneHtml(c) {
     if (!d.text) return `<p class="muted">No response is drafted for this action.</p>`;
     const ok = d.verified;
     return `<div class="verify"><span class="${ok ? 'good' : 'bad'}"><b>${ok ? '✔ Grounding check passed' : '✘ Grounding check failed'}</b></span><span class="muted">· ${d.sentences.length} sentences, every figure traced to evidence</span></div>
-      <div class="draft">${d.sentences.map((s) => `<div class="s">${esc(s.text)}${s.cites.map((x) => `<sup title="Evidence ${x}">[${x}]</sup>`).join('')}</div>`).join('')}</div>
+      <div class="draft">${d.sentences.map((s) => `<div class="s">${esc(s.text)}${s.cites.map((x) => `<sup title="${x === 'E0' ? 'E0: the PayPal dispute record itself' : 'Evidence ' + x}">[${x}]</sup>`).join('')}</div>`).join('')}</div>
       <h4>Written by</h4><span class="chip ${d.source.startsWith('llm') ? 'on' : ''}">${esc(d.source === 'template' ? 'deterministic template' : d.source)}</span>
       ${d.llm_rejected ? `<h4>LLM draft rejected — why</h4>${d.llm_rejected.map((p) => `<div class="rule"><code>verifier</code><span>${esc(p)}</span></div>`).join('')}` : ''}
       ${d.llm_error ? `<div class="rule"><code>llm</code><span>${esc(d.llm_error)}; template used.</span></div>` : ''}`;
@@ -153,7 +184,7 @@ document.querySelectorAll('#tabs button').forEach((b) => (b.onclick = () => { dr
 const hash = () => location.hash.replace('#', '').split('/');
 (async () => {
   await refresh();
-  if (!S.cases.length) { await api('/api/triage', {}); await refresh(); }
+  if (!S.cases.length && !location.search.includes('manual')) { await api('/api/triage', {}); await refresh(); } // ?manual starts with an empty queue so you can click Run agent triage yourself
   const [hid, htab] = hash();
   if (hid) { const c = S.cases.find((x) => x.dispute_id === hid); if (c) { selected = c.id; tab = htab || 'why'; renderDetail(); renderGrid(); } }
 })();

@@ -4,7 +4,13 @@
 
 Built for the [PayPal AI Hackathon](https://paypalaihackathon.devpost.com/). MIT licensed. **Runs with zero secrets** (DEMO mode); goes live against the PayPal sandbox by adding two environment variables ([docs/GO_LIVE.md](docs/GO_LIVE.md)).
 
+**Demo video (2:32, sandbox simulator):** [docs/demo.mp4](docs/demo.mp4) · captions [docs/demo.srt](docs/demo.srt) · script [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) &nbsp;|&nbsp; **Try it:** `npm install && npm run demo` &nbsp;|&nbsp; **Devpost copy:** [docs/SUBMISSION.md](docs/SUBMISSION.md)
+
 ![Dispute queue](docs/img/queue.png)
+
+## Who it is for
+
+The owner of a small online shop (one to five people, no dispute team) who receives PayPal disputes and has **10 days** to answer each one with the right evidence, or loses by default.
 
 ## The problem
 
@@ -49,11 +55,11 @@ PayPal disputes ─► read buyer's messages ─► collect evidence ─► DECI
 git clone https://github.com/Quantumwoof/disputedesk && cd disputedesk
 npm install
 npm run demo          # dashboard at http://localhost:4000 — DEMO · local PayPal simulator
-npm test              # 28 tests
+npm test              # 29 tests
 npm run eval          # offline benchmark, writes eval/results/
 ```
 
-Click **Run agent triage**, open a case, read the *Why / Evidence / Response draft / PayPal call* tabs, then **Approve**. Open the *PayPal API calls* drawer to watch the real HTTP request the approval produced (multipart upload included) and the *Audit log* to see the hash chain.
+Click **Run agent triage** (or open `http://localhost:4000/?manual` to start with an empty queue), open a case, read the *Why / Evidence / Response draft / PayPal call* tabs, then **Approve**. Open the *PayPal API calls* drawer to watch the real HTTP request the approval produced (multipart upload included) and the *Audit log* to see the hash chain.
 
 Free AI (optional): `LLM_PROVIDER=pollinations npm run demo` — keyless, no account. Any OpenAI-compatible endpoint (local Ollama, OpenRouter free models, Groq/Gemini free tiers) works via `LLM_PROVIDER=openai-compatible LLM_BASE_URL=… LLM_MODEL=…`.
 
@@ -67,7 +73,35 @@ CLI: `node bin/disputedesk.js triage` · `approve <id> [--send]` · `reject <id>
 
 ### Live PayPal sandbox
 
-Set `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` (a *Merchant* sandbox app with the Disputes add-on) and `MERCHANT_DATA` (the shop export; see `data/merchant.example.json`). The banner turns from `DEMO` to `LIVE · PayPal sandbox REST`. Step-by-step and an honest list of what has/has not been verified: [docs/GO_LIVE.md](docs/GO_LIVE.md).
+Set `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` (a *Merchant* sandbox app with the Disputes add-on) and `MERCHANT_DATA` (the shop export; see `data/merchant.example.json`). First run `npm run sandbox:check` (read-only: OAuth, list, get). The banner turns from `DEMO` to `LIVE · PayPal sandbox REST`. Step-by-step and an honest list of what has/has not been verified: [docs/GO_LIVE.md](docs/GO_LIVE.md).
+
+## AG Grid in the product (sponsor angle)
+
+The dispute queue is an [AG Grid Community](https://www.ag-grid.com/) (v36.3, MIT) table, not a decoration: it is the operator's main working surface. Features in use, all Community edition, all in `src/web/public/app.js`:
+
+| AG Grid feature | How DisputeDesk uses it |
+|---|---|
+| Sorting, column resizing, pinned column | Queue sorts by hours left before PayPal's 10-day deadline; dispute ID pinned left |
+| Custom cell renderers | Deadline urgency colours, decision pills (Fight / Accept / Offer / Needs you), evidence-coverage bars |
+| External filter (`isExternalFilterPresent` / `doesExternalFilterPass`) | One-click decision chips with live counts |
+| Quick filter + column filters | Search across buyer, dispute, reason; number filter on amount |
+| Pinned bottom row | Live total at stake for whatever is currently filtered |
+| Row-class rules | Red marker on cases due in under 24 hours |
+| Cell-change flash | The Status cell flashes when an approval is sent to PayPal |
+| Row selection → detail panel | Selecting a row opens the rule trace, evidence, grounded draft and the exact PayPal call |
+| CSV export | `Export CSV` downloads the filtered, sorted queue |
+| Column state persistence | Column order and widths are remembered in `localStorage` |
+| Dark theme via the Theming API | `themeQuartz` + `colorSchemeDark` with custom parameters |
+
+## How this maps to the judging criteria
+
+| Criterion | Where to look |
+|---|---|
+| Technological implementation | PayPal Disputes API client (multipart `provide-evidence`, OAuth, refresh) · PayPal MCP gateway · own MCP server · deterministic rules + grounding verifier · digest-bound approval · hash-chained audit. `npm run sandbox:check` is a read-only live-sandbox smoke test |
+| Design (complete product) | Dashboard + CLI + MCP server share one state; approve/reject, audit log, benchmark and API-call panels; zero-secret demo; Render config |
+| Potential impact | A specific user (small PayPal merchants), a specific rule (10-day response window) and a decision aid for the two costly mistakes: fighting unwinnable cases and conceding winnable ones |
+| Innovation | "Models propose, deterministic checks decide": every claim in an AI-drafted response must trace to evidence, and a documented gap in PayPal's own MCP toolkit (no evidence or offer tool) is filled via REST |
+| Presentation | [docs/demo.mp4](docs/demo.mp4) (2:32, captioned, labelled as the simulator) · this README · [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 
 ## Architecture
 
@@ -134,6 +168,6 @@ The three rejections are the point of the verifier: those drafts would otherwise
 
 ## Repository map
 
-`src/paypal` (REST, MCP gateway, simulator) · `src/engine` (messages, triage, narrative, verify, state, agent) · `src/mcp` · `src/web` · `eval/` · `tests/` · `docs/` · `ci/ci.yml` (GitHub Actions workflow, kept outside `.github/` — move it to `.github/workflows/` to enable CI).
+`src/paypal` (REST, MCP gateway, simulator) · `src/engine` (messages, triage, narrative, verify, state, agent) · `src/mcp` · `src/web` · `scripts/sandbox-check.js` · `eval/` · `tests/` · `docs/` (incl. `docs/video/`, how the demo video was produced) · `ci/ci.yml` (GitHub Actions workflow, kept outside `.github/` — move it to `.github/workflows/` to enable CI).
 
 MIT © 2026 Joshua Jubelo. AG Grid Community (MIT) is vendored for the dashboard grid.

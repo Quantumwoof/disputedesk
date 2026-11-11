@@ -10,7 +10,7 @@ button.primary{background:var(--blue);border-color:var(--blue);color:#00131f;fon
 button.go{background:var(--green);border-color:var(--green);color:#03231a;font-weight:700}button.stop{color:var(--red)}
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px 22px 4px}.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
 .kpi small{color:var(--muted);display:block;font-size:12px}.kpi b{font-size:22px}.kpi span{color:var(--muted);font-size:12px}
-main{display:grid;grid-template-columns:minmax(600px,1.35fr) minmax(440px,1fr);gap:16px;padding:12px 22px;height:calc(100vh - 340px);min-height:520px}
+main{display:grid;grid-template-columns:minmax(660px,1.8fr) minmax(440px,1fr);gap:16px;padding:12px 22px;height:calc(100vh - 340px);min-height:520px}
 .queue,.detail{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;min-height:0}
 .sect-h{display:flex;align-items:baseline;gap:10px;padding:12px 16px 4px}.sect-h h2{margin:0;font-size:15px}.muted{color:var(--muted)}
 .grid{flex:1;margin:8px;min-height:0}
@@ -37,3 +37,9 @@ table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{text-align:left
 .urgent{color:var(--red);font-weight:700}.soon{color:var(--amber);font-weight:600}
 .ag-theme-custom{}
 @media(max-width:1100px){main{grid-template-columns:1fr;height:auto}.kpis{grid-template-columns:repeat(2,1fr)}.grid{height:380px}}
+
+.qtools{display:flex;gap:8px;align-items:center;padding:4px 16px 0}.chips{display:flex;gap:6px;flex-wrap:wrap}.chips button{padding:3px 10px;font-size:12px;border-radius:999px;color:var(--muted)}.chips button.on{color:var(--text);border-color:var(--blue)}
+.qtools input{margin-left:auto;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--text);padding:5px 10px;font-size:12px;width:230px}.qtools .ghost{font-size:12px;padding:5px 10px}
+.row-urgent{box-shadow:inset 3px 0 0 var(--red)}
+
+.bar{flex-wrap:wrap}.bar .note{flex:1 1 100%;line-height:1.35}.bar .note+button{margin-left:auto}

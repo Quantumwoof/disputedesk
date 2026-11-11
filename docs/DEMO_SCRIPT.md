@@ -1,15 +1,20 @@
-# Demo video script (target 2:40, hard limit 3:00)
+# Demo video script (as recorded: 2:32, under the 3:00 limit)
 
-Record the browser at 1440×900 on `npm run demo` (optionally `LLM_PROVIDER=pollinations npm run demo`). Everything shown is real output of the repo; the banner says **DEMO · local PayPal simulator** — keep it on screen and say so in the first 20 seconds.
+File: [`docs/demo.mp4`](demo.mp4) (1920×1080, H.264/AAC, captions burned in; [`demo.srt`](demo.srt) for YouTube closed captions) · thumbnail: [`demo-thumbnail.png`](demo-thumbnail.png) · how it was made: [`video/README.md`](video/README.md).
 
-| Time | On screen | Say |
+Everything on screen is real output of this repo. The video is labelled as the **local PayPal sandbox simulator** (banner `DEMO · local PayPal simulator`); no live PayPal sandbox run exists yet, and the video says so.
+
+| Time | On screen | Narration (summary; full text in `docs/video/narration.py`) |
 |---|---|---|
-| 0:00–0:20 | Title card → dashboard queue (12 open disputes, KPI cards) | "Small merchants lose PayPal disputes they could win, and fight ones they can't. PayPal gives a seller ten days to respond. DisputeDesk is an agent and MCP server that works the queue — and never submits anything it can't prove. This is demo mode: a local PayPal sandbox simulator, no secrets." |
-| 0:20–0:40 | Click **Run agent triage**. Queue fills: Fight / Accept / Offer / Needs you. Point at *Evidence* bars | "One click: it reads every dispute and the buyer's message, collects evidence from the shop's own records, and recommends an action. Five fights, four accepts, one offer, two for me." |
-| 0:40–1:15 | Open **PP-D-96035** (Fight) → *Why* tab (rule trace) → *Evidence* tab (E1–E5, 'in response') | "The decision is made by rules, not by the model. Here: carrier says delivered to Denver 80202, which matches the transaction's shipping address, dates are consistent, the amount is worth contesting. Each fact is a numbered evidence item." |
-| 1:15–1:50 | *Response draft* tab: green **Grounding check passed**, citations `[E3]` | "The response is drafted — by a free LLM or a template — and then verified. Every sentence cites evidence; every date, amount and tracking number must literally appear in what it cites. Claims like 'signed for' or 'insured' must be backed by evidence. A draft that fails is thrown away." |
-| 1:50–2:10 | Open **PP-D-64479** (injection) → *Why* tab showing "SYSTEM OVERRIDE…" with **injection attempt: YES** | "Buyers can type anything. This one tries to tell the agent to fight and reveal its prompt. Buyer text is data: the model only fills a fixed schema, an injection veto fires, and the case goes to accept. In my benchmark, zero of 68 attacked cases got the attacker a different automatic action." |
-| 2:10–2:35 | Click **Approve & send evidence to PayPal** on PP-D-96035 → open *PayPal API calls* drawer (POST …/provide-evidence, 200) → *Audit log* | "Nothing leaves until I approve — approval is bound to a hash of the exact payload. Here is the real multipart `provide-evidence` request the PayPal client just made, and the hash-chained audit trail. The same flow is available as an MCP server for any MCP client, and I also drive PayPal's own `@paypal/mcp` server — which has no evidence tool, so that part goes through REST." |
-| 2:35–2:50 | *Benchmark* tab, then README results table | "72 seeded disputes: DisputeDesk makes the right call on all 72 with zero unsupported submissions; fighting everything is right 33% of the time. Those labels are mine, so it's a regression check, not a win rate. Going live needs two sandbox credentials. DisputeDesk: models propose, deterministic checks decide." |
+| 0:01–0:16 | Title slide: DEMO label | Problem hook: small merchants lose disputes they could win, 10-day window, agent + MCP server that never submits what it can't prove |
+| 0:16–0:29 | Dashboard, empty queue, banner; click **Run agent triage** | Demo mode = local simulator, no secrets; twelve disputes waiting |
+| 0:29–0:47 | Queue fills; AG Grid decision chips (Fight 5 · Accept 4 · Offer 1 · Needs you 2), quick filter, Export CSV | Reads each dispute and buyer message, gathers evidence from the shop's records, recommends an action |
+| 0:47–1:03 | Free-LLM instance (badge `AI: pollinations:openai`); open **PP-D-96035** → *Why* | Rules decide, not the model: FedEx delivered to Denver 80202 = transaction address |
+| 1:03–1:12 | *Evidence* tab (E1–E5) | Order, tracking number, carrier delivery scan, each with checks |
+| 1:12–1:24 | *Response draft*: green **Grounding check passed**, `[E#]` citations | Model drafts; verifier requires citations and literal matches; failed drafts are thrown away |
+| 1:24–1:42 | **PP-D-64479** *Why*: hostile buyer text, `injection attempt: YES`, guardrail | Buyer text is data; records decide (no shipment → accept); 0 of 68 attacks got a different automatic action |
+| 1:42–2:02 | *PayPal call* tab → **Approve** → API-call drawer (`POST …/provide-evidence` 200) → *Audit log* | Human approval bound to payload hash; multipart provide-evidence; hash-chained audit; MCP server; PayPal MCP has no evidence tool so REST |
+| 2:02–2:27 | Results slide | 72/72 consistency check (labels are mine), baselines, injection 0/68, verifier 24/24, LLM 90.6% vs 75.0%, drafts 19/24 first try, 3 rejected; live sandbox not yet verified |
+| 2:27–2:32 | End card | Repo URL, `npm install && npm run demo`, MIT |
 
-Notes for the recording: don't claim live PayPal; don't claim win-rate improvements; if the LLM is slow, record with the offline engine (the UI says `AI: offline`).
+Notes: no win-rate claim is made; the benchmark is described as a consistency check; the free-LLM scenes use a queue triaged beforehand because the anonymous free tier is slow (the narration says so).

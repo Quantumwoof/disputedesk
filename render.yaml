@@ -10,7 +10,8 @@ services:
     envVars:
       - key: DISPUTEDESK_MODE
         value: demo
+      # none = instant offline engine, so the first page load is fast. Set pollinations for free-LLM drafting (slower: ~3 min to triage 12 disputes).
       - key: LLM_PROVIDER
-        value: pollinations
+        value: none
       - key: PORT
         value: 10000

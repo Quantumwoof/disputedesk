@@ -9,6 +9,13 @@ DEMO mode (default) talks to a local PayPal **simulator** so everything runs wit
 3. **One test dispute** (PayPal documents the buyer-side flow in "Set up accounts and environment" / "Test and go live" for the Disputes API): pay the sandbox business account from the sandbox personal account, then sign in at https://www.sandbox.paypal.com as the buyer, open the transaction → **Report a problem**. The dispute then appears for the business account with status `WAITING_FOR_SELLER_RESPONSE`.
 4. **A merchant export** for the shop whose transactions are disputed: copy `data/merchant.example.json` and key each record by the PayPal `seller_transaction_id` of your sandbox payment. Orders, shipments (carrier + tracking number + delivery scan + delivered-to postal/country), refunds and returns are the only inputs the engine reads.
 
+## Check the credentials first (read-only)
+
+```bash
+PAYPAL_CLIENT_ID=… PAYPAL_CLIENT_SECRET=… npm run sandbox:check   # OAuth token, list disputes, get one; sends nothing
+npm run sandbox:check -- --simulator                              # same script against the bundled simulator
+```
+
 ## Run it
 
 ```bash

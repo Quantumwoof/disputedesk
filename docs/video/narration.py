@@ -1,0 +1,12 @@
+# Narration, one entry per beat. Keys referenced by the recorder.
+N = {
+ 'title': "Small merchants lose PayPal disputes they could win, and fight ones they can't. PayPal gives a seller ten days to respond. DisputeDesk is an AI agent and MCP server that works the dispute queue, and never submits anything it can't prove.",
+ 'demo': "This is demo mode: a local PayPal sandbox simulator, not live PayPal, so it runs with no secrets. A ceramics shop has twelve disputes waiting at PayPal. One click on run agent triage.",
+ 'triage': "The agent reads every dispute and the buyer's message, gathers evidence from the shop's own records, and recommends an action: five to fight, four to accept, one refund offer, and two for the owner. The queue is an AG Grid: filter by decision, search, and export.",
+ 'why': "Now the same app with a free language model, already triaged because the free tier is slow. Here is a case to fight. The decision comes from rules, not the model: FedEx delivered to Denver, matching the transaction's shipping address, and the amount is worth contesting.",
+ 'evidence': "Every fact is a numbered evidence item: the order, the FedEx tracking number, and the carrier's delivery scan, each with the checks it passed.",
+ 'draft': "The model drafts the response, then a verifier checks it. Every sentence cites evidence, and every date, amount and tracking number must literally appear in what it cites. A draft that fails is thrown away.",
+ 'inject': "Buyers can type anything. This one tells the agent to fight and reveal its prompt. Buyer text is treated as data: the injection is flagged, and the records decide. No shipment exists, so it goes to accept. In my benchmark, none of sixty-eight attacks got the attacker a different automatic action.",
+ 'approve': "Nothing leaves until I approve, and approval is bound to a hash of the exact payload. Approving sends the multipart provide-evidence request you see here, plus a hash-chained audit entry. It is also an MCP server, and I drive PayPal's own MCP server too. That has no evidence tool, so this call goes through REST.",
+ 'results': "On seventy-two seeded disputes, DisputeDesk makes the expected call every time with no unsupported submissions, while fighting everything is right a third of the time. Those labels are mine, so it is a consistency check, not a win rate. With the free model, buyer-intent accuracy is ninety point six percent versus seventy-five. Going live needs two sandbox credentials. Models propose; deterministic checks decide.",
+}

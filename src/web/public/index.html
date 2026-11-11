@@ -26,6 +26,7 @@
 <main>
   <section class="queue">
     <div class="sect-h"><h2>Dispute queue</h2><span class="muted" id="queue-sub"></span></div>
+    <div class="qtools"><div id="chips" class="chips" role="group" aria-label="Filter by agent decision"></div><input id="qf" type="search" placeholder="Quick filter (buyer, dispute, reason…)" aria-label="Quick filter"><button id="btn-csv" class="ghost" title="Export the filtered, sorted queue (AG Grid CSV export)">Export CSV</button></div>
     <div id="grid" class="grid"></div>
   </section>
   <aside class="detail" id="detail"><div class="empty"><h3>Select a dispute</h3><p>The agent shows its decision, the rules that fired, the evidence it can honestly support, and a draft that has passed the grounding check. Nothing is sent to PayPal until you approve.</p></div></aside>

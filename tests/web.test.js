@@ -13,6 +13,10 @@ test('dashboard API: triage → approve sends to the simulator; reject sends not
   try {
     assert.match(await (await fetch(base + '/')).text(), /DisputeDesk/);
     assert.equal((await fetch(base + '/vendor/ag-grid-community.min.js')).status, 200);
+    const html = await (await fetch(base + '/')).text();
+    assert.match(html, /id="chips"/); assert.match(html, /id="btn-csv"/); assert.match(html, /id="qf"/); // AG Grid toolbar: decision filter, quick filter, CSV export
+    const js = await (await fetch(base + '/app.js')).text();
+    for (const f of ['isExternalFilterPresent', 'pinnedBottomRowData', 'exportDataAsCsv', 'quickFilterText', 'rowClassRules', 'enableCellChangeFlash', 'applyColumnState']) assert.ok(js.includes(f), f + ' used by the grid');
     assert.equal((await fetch(base + '/../package.json')).status, 404);
     assert.equal((await post('/api/triage')).body.triaged, 12);
     const st = await (await fetch(base + '/api/state')).json();

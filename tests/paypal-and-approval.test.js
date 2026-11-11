@@ -147,3 +147,13 @@ test('merchant JSON export format loads for sandbox mode (data/merchant.example.
   assert.ok(v.order.order_id.startsWith('KC-'));
   assert.equal(store.byTransaction('NOPE'), null);
 });
+
+test('sandbox-check script: read-only smoke test passes against the simulator and never sends evidence', async () => {
+  const { sandboxCheck } = await import('../scripts/sandbox-check.js');
+  const { mock, rest } = await rig();
+  try {
+    const steps = await sandboxCheck(rest, () => {});
+    assert.deepEqual(steps.map((s) => s.ok), [true, true, true]);
+    assert.equal(mock.calls.some((c) => c.method === 'POST' && !c.path.endsWith('/oauth2/token')), false);
+  } finally { await mock.close(); }
+});
