@@ -4,7 +4,7 @@
 
 Built for the [PayPal AI Hackathon](https://paypalaihackathon.devpost.com/). MIT licensed. **Runs with zero secrets** (DEMO mode); goes live against the PayPal sandbox by adding two environment variables ([docs/GO_LIVE.md](docs/GO_LIVE.md)).
 
-**Demo video (2:32, sandbox simulator):** [docs/demo.mp4](docs/demo.mp4) · captions [docs/demo.srt](docs/demo.srt) · script [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) &nbsp;|&nbsp; **Try it:** `npm install && npm run demo` &nbsp;|&nbsp; **Devpost copy:** [docs/SUBMISSION.md](docs/SUBMISSION.md)
+**Demo video (2:32, sandbox simulator):** [YouTube](https://youtu.be/TraSILcnjWk) · [docs/demo.mp4](docs/demo.mp4) · captions [docs/demo.srt](docs/demo.srt) · script [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) &nbsp;|&nbsp; **Try it:** `npm install && npm run demo` &nbsp;|&nbsp; **Devpost copy:** [docs/SUBMISSION.md](docs/SUBMISSION.md)
 
 ![Dispute queue](docs/img/queue.png)
 

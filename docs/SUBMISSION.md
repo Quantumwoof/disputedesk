@@ -16,7 +16,7 @@ PayPal disputes in, verified evidence out
 
 ## Try it out (links)
 * Code (MIT): https://github.com/Quantumwoof/disputedesk
-* Demo video: VIDEO_URL (also in the repo as `docs/demo.mp4`, 2:32, captioned)
+* Demo video: https://youtu.be/TraSILcnjWk (also in the repo as `docs/demo.mp4`, 2:32, captioned)
 * Run locally, no secrets, no account: `git clone https://github.com/Quantumwoof/disputedesk && cd disputedesk && npm install && npm run demo` → http://localhost:4000
 * Optional free hosting config: `render.yaml`
 
